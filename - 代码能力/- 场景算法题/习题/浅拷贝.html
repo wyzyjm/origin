@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>浅拷贝</title>
+	</head>
+	<body>
+		<script>
+			var obj = {
+				name:"小明",
+				hoby:['篮球','小花',['吃饭','喝酒','KTV']]
+			}
+			// var newObj = Object.assign({},obj) // 方式一
+			function copy(obj){ // 方式二
+				var obj2 = {}
+				for(var i in obj){
+					if(obj.hasOwnProperty(i)){
+						obj2[i] = obj[i]
+					}
+				}
+				return obj2
+			}
+			var newObj = copy(obj)
+			newObj.name = '小花'
+			newObj.hoby[0] = '哈哈哈'
+			console.log('obj',obj)
+			console.log('newObj',newObj)
+		</script>
+	</body>
+</html>

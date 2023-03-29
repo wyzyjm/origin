@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>预编译</title>
+    </head>
+    <body>
+        <h2>预编译</h2>
+        <ul>
+            <ol>
+                创建OA对象
+            </ol>
+            <ol>
+                找形参和变量声明
+            </ol>
+            <ol>
+                实参和形参相统一
+            </ol>
+            <ol>
+                找函数声明, 会覆盖变量声明
+            </ol>
+        </ul>
+        <p>然后, js开始从上往下执行</p>
+        <script>
+            function fn(a, b) {
+                console.log(a)
+
+                var a = 123
+
+                console.log(a)
+
+                console.log(c)
+
+                function a() {}
+
+                if (false) {
+                    var d = 123
+                }
+                console.log(d)
+
+                console.log(b)
+                var b = function () {}
+                console.log(b)
+                function c() {}
+                console.log(c)
+            }
+
+            fn(1, 2)
+            /**
+			 OA:{
+				 a:undefined 1 function a(){}
+				 b:undefined 2 
+				 c: function c(){}
+				 d:undefind
+			 }
+			 js 运行结果
+				function a(){}
+				123
+				function c(){}
+				undefind
+				2
+				function (){}
+				function c(){}
+			 * */
+        </script>
+    </body>
+</html>

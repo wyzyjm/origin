@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>this</title>
+	</head>
+	<body>
+		<h2>this</h2>
+		<ul>
+			<ol>函数中直接使用 fn(), this指向 window</ol>
+			<ol>函数作为 对象的方法被调用a.fn(), this指向 对象</ol>
+		</ul>
+		<script type="text/javascript">
+			var name = 222
+			var a = {
+				name:111,
+				say:function(){
+					console.log(this.name)
+				}
+			}
+			var fun = a.say
+			fun()
+			a.say()
+			var b = {
+				name:333,
+				say:function(fun){
+					fun()
+				}
+			}
+			b.say(a.say)
+			b.say = a.say
+			b.say()
+			
+			/**
+			 结果:
+				222
+				111
+				222
+				333
+			 */
+		</script>
+	</body>
+</html>
