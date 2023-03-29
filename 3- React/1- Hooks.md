@@ -43,9 +43,9 @@ function Component(props) {
 
 ## React router
 
--   `useNavigate`,实现页面跳转 `useHistory`: 5 版本
--   `useLocation`,获取当前路由信息.
--   `useParams`,获取当前路由参数等.
+-   `useNavigate`, 实现页面跳转 `useHistory`: 5 版本
+-   `useLocation`, 获取当前路由信息.
+-   `useParams`, 获取当前路由参数等.
 
 ## Redux
 
