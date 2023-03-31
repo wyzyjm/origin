@@ -3,7 +3,8 @@ const arr = [
     [2, 3],
     [4, 5]
 ]
-console.log("arr", arr.flat(1)) // 方式一
+// 方式一
+console.log("arr", arr.flat(1))
 
 // 方式二
 function flat(arr) {
