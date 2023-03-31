@@ -10,8 +10,9 @@
     -   `组件化`: 支持将页面拆分成多个组件的编写方式,来提高代码复用性,同时也增加了可维护性.
     -   `客户端路由`:
         -   而不像传统多页面应用, 每个页面的加载都要请求一个 html 文件.然后浏览器解析 html 文件,再加载对应的 js,发送请求等.
-        -   而单页面应用则是加载一个 html,然后通过显示不同的组件,来展示一个伪页面,
-        -   然后浏览器地址栏有两种模式, history 模式 和 hash 模式, history 通过操作浏览器 history api, 如 pushState, replaceState, go, back 等来实现前进后退.
+        -   而单页面应用则是加载一个 html,然后通过显示不同的组件,来展示一个伪页面
+        -   然后浏览器地址栏有两种模式, history 模式 和 hash 模式, history 通过操作浏览器 history api, 如 pushState, replaceState, go, back 等来实现添加替换及前进后退, 浏览器并不会刷新页面
+        -   手动刷新页面的时候, 浏览器才会发起请求, 因此还需要在服务端配置,所有 404 请求响应到 index.html.
         -   具体实现 有对应的库: vue:vue-router, React: react-router 和 react-router-dom.
     -   `配套工具`: 这些框架都有庞大而活跃的社区, 因此每个框架都提供了各种工具来改善开发体验
         -   如可以添加测试脚本,来确保应用的表现行为, 比较多的测试框架有 jest, 我用过的一个是微软 playwright, 都是测一些 UI 和 行为.
