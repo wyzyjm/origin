@@ -18,7 +18,7 @@ function Component(props) {
     const [state, dipatch] = useReducer(function (state, action) {}, initState) // 管理比较复杂的数据类型.
     dispatch({ type: "add" })
 
-    // 副作用: 异步调用 改变dom. 设置订阅. 操作定时器, 如果页面有闪烁的问题,使用useLayoutEffect
+    // 副作用: 异步调用 改变dom. 设置订阅. 操作定时器,发送http请求, 如果页面有闪烁的问题,使用useLayoutEffect
     useEffect(() => {}) // 每次加载都执行
     useEffect(() => {}, []) // 加载完毕 执行一次
     useEffect(() => {
