@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>闭包</title>
+    </head>
+    <body>
+        <script>
+            /* 
+                闭包: 形式就是 函数中返回一个新函数
+
+                    好处:
+                        1. 延长了变量的生命周期. 函数内部的变量能被外部访问.即实现了变量在全局的使用, 也没有污染全部变量.
+                        2. 创建私有环境, Vue中每个组件中的data使用函数的原因.
+            */
+            function Bb() {
+                let a = "小明"
+                return {
+                    b: a
+                }
+            }
+            const res = Bb()
+            console.log(res)
+        </script>
+    </body>
+</html>
