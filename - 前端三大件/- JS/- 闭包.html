@@ -9,20 +9,44 @@
     <body>
         <script>
             /* 
-                闭包: 形式就是 函数中返回一个新函数
-
-                    好处:
-                        1. 延长了变量的生命周期. 函数内部的变量能被外部访问.即实现了变量在全局的使用, 也没有污染全部变量.
-                        2. 创建私有环境, Vue中每个组件中的data使用函数的原因.
+               闭包:
+                    形成: 函数中返回一个函数,而返回的函数使用了这个函数的变量,这样就形成了闭包.
+                    好处: 
+                        1. 延长变量的生命周期, 减少全局变量污染.
+                        2. 创建私有环境.
+                    缺点:
+                        容易造成内存泄漏, 变量没有被垃圾回收机制及时清理.
+                    
             */
-            function Bb() {
+
+            // function Bb() {
+            //     let a = "小明"
+            //     return {
+            //         b: a
+            //     }
+            // }
+            // const res = Bb()
+            // res.b = "小黑"
+            // console.log(res)
+            // const res2 = Bb()
+
+            // res2.b = "小美"
+            // console.log(res2)
+            /*************************/
+            const fn = (function () {
                 let a = "小明"
                 return {
                     b: a
                 }
-            }
-            const res = Bb()
-            console.log(res)
+            })()
+            const a = fn
+            console.log(a)
+            a.b = "小黑"
+            console.log(a)
+            const b = fn
+            b.b = "哈哈"
+            console.log(b)
+            console.log(a)
         </script>
     </body>
 </html>
