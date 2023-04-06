@@ -5,15 +5,37 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                margin-top: 100px;
+                background: #eee;
+                width: 100%;
+                height: 2000px;
+            }
+
+            .sticky-box {
+                position: sticky;
+                width: 100%;
+                height: 60px;
+                top: 30px;
+                background: #ff7300;
+            }
+
+            div {
+                font-size: 30px;
+                text-align: center;
+                color: #fff;
+                line-height: 60px;
+            }
+        </style>
     </head>
     <body>
-        <script>
-            let a = "1"
-            function fn() {
-                console.log(a)
-            }
-            fn()
-            console.log("window", window)
-        </script>
+        <div class="container">
+            <div class="sticky-box">内容1</div>
+        </div>
     </body>
 </html>
