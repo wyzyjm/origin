@@ -1,12 +1,14 @@
 # http 请求
 
--   前后端分离: 核心思想就是 前端 html 页面 通过 ajax 调用后端 接口, 然后使用 json 数据进行交互.
-
--   axios 封装 promise 的方式封装了 xmlHttp 请求
-    -   axios 实例的封装, 主要是通过拦截器 分别处理 http 请求 和 响应,
-    -   然后是各个模块的请求 api 封装. 这样各模块在使用过程中只需要关系传什么参数就行了.
+-   目的:
+    -   请求拦截, 在请求头中添加 token.
+    -   响应拦截,处理常见错误,
+    -   api 集中式管理.
 
 ```js
+
+import { Axios } from 'axios'
+
 const service = Axios.create({
     baseURL: config.baseURL // 根据不同环境进行设置
     timeout:10000 , // 超时时间
@@ -21,6 +23,9 @@ const service = Axios.create({
 // request intercept
 service.interceptors.request.use(
     config => {
+        /*
+            config: baseURL,headers, timeout, data, parames,等.
+         */
         let token = window.localStorage.getItem("jwtToken")
         if (token) {
             config.headers.Authorization = token
@@ -30,10 +35,12 @@ service.interceptors.request.use(
     error => Promise.reject(error)
 )
 
-// response intercept
+// response 统一执行某些操作。
 service.interceptors.response.use(
     response => {
-        // console.log('拦截',response);
+        /*
+            response: status, data, statusText, header,request,config
+         */
         if (response.status === 200) {
             return response.data // 响应data
         } else {
@@ -41,6 +48,12 @@ service.interceptors.response.use(
         }
     },
     error => {
+        /*
+            error.responese.status
+                401: 未登录, 跳转到登录页
+                404: 请求地址出错
+                500: 服务端出错
+         */
         Promise.reject(error)
     }
 )
