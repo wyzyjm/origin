@@ -15,8 +15,8 @@
 ```ts
 function Component(props) {
     const [count, setCount] = useState(1) // 组件自身状态.
-    const [state, dipatch] = useReducer(function (state, action) {}, initState) // 管理比较复杂的数据类型.
-    dispatch({ type: "add" })
+    const [state, reducerDispatch] = useReducer(function (state, action) {}, initState) // 管理比较复杂的数据类型.
+    reducerDispatch({ type: "add" })
 
     // 副作用: 异步调用 改变dom. 设置订阅. 操作定时器,发送http请求, 如果页面有闪烁的问题,使用useLayoutEffect
     useEffect(() => {}) // 每次加载都执行
@@ -33,7 +33,7 @@ function Component(props) {
       1. 原理就是找个全局的地方 将返回值和 依赖项存起来
       2. 每次执行时判断一下有没有 缓存,
             - 有的话再 判断依赖项有没有,并且比较一下这次的依赖项和上次的依赖项是否相同,相同则直接return 缓存值.
-            - 如何进行比较 ?
+            - 如何进行比较, 判断两个数组是否相同
       3. 没有就执行函数 并返回值
      */
     useMemo(() => {}, [])
