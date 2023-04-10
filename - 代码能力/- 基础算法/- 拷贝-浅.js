@@ -2,12 +2,13 @@ var obj = {
     name: "小明",
     hoby: ["篮球", "小花", ["吃饭", "喝酒", "KTV"]],
     date: new Date(),
+    reg: new RegExp(/\d/),
     say: function () {
         console.log("123")
     }
 }
 
-// var newObj = Object.assign({}, obj) // 方式一
+// var newObj = Object.assign({}, obj) // 方式一 无法拷贝对象, 只是对复杂类型值的引用
 let newObj = JSON.parse(JSON.stringify(obj)) // 方式二 只能拷贝json类型的具体数据, 不能拷贝函数,日期,正则等
 // function copy(obj) {
 //     // 方式二
