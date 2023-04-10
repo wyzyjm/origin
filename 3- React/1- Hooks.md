@@ -50,11 +50,19 @@ function Component(props) {
 
 ## React router
 
--   `useNavigate`, 实现页面跳转 `useHistory`: 5 版本
--   `useLocation`, 获取当前路由信息.
--   `useParams`, 获取当前路由参数等.
+-   `useNavigate`: 实现页面跳转 `useHistory`: 4 版本
+-   `useLocation`: 获取当前路由信息.
+-   `useParams`: 获取当前路由参数等.
 
 ## Redux
 
 -   `useSelector`: 获取 redux 中的 state, 也可以通过 connect 函数来注入到组件中
 -   `useDispatch`: 拿返回值来触发 state 修改
+
+## hooks 为什么不能在条件语句中执行?
+
+-   因为要确保组件每次渲染 hooks 都按照同样的顺序执行, 以此来确保 state 状态的正确性.
+-   react 组件通过 `memoizedState` 属性来 链式的形式来 存储 hooks baseState, memeoState,next.
+-   如果写在了条件语句中, 当条件不通过时, 这个 hooks 就不会执行, React 就会认为下一个 hooks 是 第二个 hooks. 这时候 hook 都错位了,就不对了.
+-   如果想写条件语句, 可以写到 useEffect 里面.
+-   当使用了 lint 插件的时候 也就无须担心这个问题了, 程序会自动报错.
