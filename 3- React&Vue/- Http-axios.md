@@ -46,14 +46,14 @@ service.interceptors.response.use(
         } else {
             return Promise.reject(response)
         }
-    },
-    error => {
         /*
             error.responese.status
                 401: 未登录, 跳转到登录页
                 404: 请求地址出错
                 500: 服务端出错
          */
+    },
+    error => {
         Promise.reject(error)
     }
 )

@@ -31,22 +31,23 @@
                 })
             }
 
-            function PromiseAll(arr) {
-                let result = []
-                let count = 0
-                return new Promise((resolve, reject) => {
-                    arr.forEach(async (item, index) => {
-                        try {
-                            const res = await item()
-                            result[index] = res
-                            count++
-                            if (count === arr.length) resolve(result) // 全部成功返回 结果
-                        } catch (error) {
-                            reject("error", error) // 一个失败, 返回结果
-                        }
-                    })
-                })
-            }
+            // function PromiseAll(arr) {
+            //     let result = []
+            //     let count = 0
+            //     return new Promise((resolve, reject) => {
+            //         arr.forEach(async (item, index) => {
+            //             try {
+            //                 const res = await item()
+            //                 result[index] = res
+            //                 count++
+            //                 if (count === arr.length) resolve(result) // 全部成功返回 结果
+            //             } catch (error) {
+            //                 reject("error", error) // 一个失败, 返回结果
+            //             }
+            //         })
+            //     })
+            // }
+
             const arr = [a1, a2, a3]
             PromiseAll(arr)
                 .then(res => {
