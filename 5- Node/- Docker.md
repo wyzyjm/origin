@@ -15,7 +15,7 @@
 ```Dockerfile
 FROM: 镜像地址
 Run 各种指令 && 连接命令
-
+    最多250多个
 # 工作目录
 WORKDIR 工作路径
 COPY  原路径 目标路径
