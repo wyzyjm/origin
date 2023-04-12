@@ -18,3 +18,24 @@ select * from table (join table2)
     order by column desc|asc
     LIMIT 1开始start,  5条数length
 ```
+
+## 链接数据库
+
+```js
+const { Client } = require("pg")
+
+const client = new Client({
+    host: "my.database-server.com",
+    port: 5334,
+    database: "database-name",
+    user: "database-user",
+    password: "secretpassword!!"
+})
+
+client.connect()
+client.query("SELECT NOW()", (err, res) => {
+    if (err) throw err
+    console.log(res)
+    client.end()
+})
+```
