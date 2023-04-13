@@ -35,8 +35,29 @@
     </head>
     <body>
         <script>
-            const res = Object.prototype.toString.call(null)
-            console.log("res", typeof NaN)
+            function Foo() {
+                getName = function () {
+                    console.log(1)
+                }
+                return this // window
+            }
+            Foo.getName = function () {
+                console.log("自身方法")
+            }
+            Foo.prototype.getName = function () {
+                console.log("原型方法")
+            }
+            var getName = function () {
+                console.log("全局变量")
+            }
+            function getName() {
+                console.log("全局方法")
+            }
+            console.log(Foo()) // window
+            Foo.getName() // 自身方法
+            getName() // 1
+            Foo().getName() // 1
+            getName() // 1
         </script>
     </body>
 </html>
