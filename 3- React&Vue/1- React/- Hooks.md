@@ -62,8 +62,8 @@ function Component(props) {
 ## hooks 为什么不能在条件语句中执行?
 
 -   因为要确保组件每次渲染 hooks 都按照同样的顺序执行, 以此来确保 state 状态的正确性.
--   react 组件通过 `memoizedState` 属性 以链式的形式来 存储 hooks baseState, memeoState,next.
--
+-   react 组件通过 `memoizedState` 属性 以链式的形式来 存储 hooks `baseState`, `memeoState`,`next`等信息.
+
 -   如果写在了条件语句中, 当条件不通过时, 这个 hooks 就不会执行, React 就会认为下一个 hooks 是 第二个 hooks. 这时候 hook 都错位了,就不对了.
 
 -   如果想写条件语句, 可以写到 useEffect 里面.
