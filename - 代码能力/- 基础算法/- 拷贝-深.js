@@ -20,9 +20,10 @@ function DeepClone(obj) {
         for (const item of obj) {
             newObj.push(DeepClone(item))
         }
-    }
-    for (const item in obj) {
-        newObj[item] = DeepClone(obj[item])
+    } else {
+        for (const item in obj) {
+            newObj[item] = DeepClone(obj[item])
+        }
     }
     return newObj
 }

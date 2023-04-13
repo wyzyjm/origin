@@ -36,7 +36,7 @@ function flattenObj(obj) {
     loop(obj, "")
     return newObj
 }
-console.log("flattenObj(obj)", flattenObj(obj))
+// console.log("flattenObj(obj)", flattenObj(obj))
 
 // 判断对象
-// console.log(null instanceof Object)
+// console.log(null instanceof Object) // false
