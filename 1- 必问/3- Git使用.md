@@ -68,3 +68,10 @@
     -   `git reset --hard 版本号` : 版本回退 毁尸灭迹的过程
     -   `git revert 移除的版本号 ` : 保留原来, 生成新的记录
         -   做过的修改会回到暂存区, 然后可以选择删除或修改后重新提交
+
+5. 暂存
+    - `git add .`
+    - `git stash` 添加暂存
+    - `git stash list` 列出所有暂存
+    - `git stash apply 暂存名称` 恢复到工作区
+    - `git stash drop 暂存名称` 删除暂存
