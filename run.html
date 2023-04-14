@@ -35,29 +35,17 @@
     </head>
     <body>
         <script>
-            function Foo() {
-                getName = function () {
-                    console.log(1)
-                }
-                return this // window
-            }
-            Foo.getName = function () {
-                console.log("自身方法")
-            }
-            Foo.prototype.getName = function () {
-                console.log("原型方法")
-            }
-            var getName = function () {
-                console.log("全局变量")
-            }
-            function getName() {
-                console.log("全局方法")
-            }
-            console.log(Foo()) // window
-            Foo.getName() // 自身方法
-            getName() // 1
-            Foo().getName() // 1
-            getName() // 1
+            let arr = [1, 3, 2, 4, 6]
+            // arr.sort((a, b) => a - b)
+            // arr.reverse()
+            // arr.join(",")
+            // console.log(arr.splice(1, 3))
+
+            // 清空数组
+            // arr.length = 0 // 方式一
+            // arr.splice(0) // 方式二
+            // arr = [] // 方式三
+            console.log(arr)
         </script>
     </body>
 </html>
