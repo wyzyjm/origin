@@ -35,17 +35,36 @@
     </head>
     <body>
         <script>
-            let arr = [1, 3, 2, 4, 6]
-            // arr.sort((a, b) => a - b)
-            // arr.reverse()
-            // arr.join(",")
-            // console.log(arr.splice(1, 3))
+            // let arr = [1, 3, 2, 4, 6]
+            // // arr.sort((a, b) => a - b)
+            // // arr.reverse()
+            // // arr.join(",")
+            // // console.log(arr.splice(1, 3))
 
-            // 清空数组
-            // arr.length = 0 // 方式一
-            // arr.splice(0) // 方式二
-            // arr = [] // 方式三
-            console.log(arr)
+            // // 清空数组
+            // // arr.length = 0 // 方式一
+            // // arr.splice(0) // 方式二
+            // // arr = [] // 方式三
+            // console.log(arr)
+
+            const pErr = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    reject("总是失败")
+                }, 1)
+            })
+
+            const pSlow = new Promise((resolve, reject) => {
+                setTimeout(resolve, 500, "最终完成")
+            })
+
+            const pFast = new Promise((resolve, reject) => {
+                setTimeout(reject, 100, "很快完成")
+            })
+
+            Promise.any([pErr, pSlow, pFast]).then(value => {
+                console.log(value)
+                // pFast fulfils first
+            })
         </script>
     </body>
 </html>

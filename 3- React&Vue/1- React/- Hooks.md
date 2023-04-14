@@ -18,12 +18,19 @@ function Component(props) {
     const [state, reducerDispatch] = useReducer(function (state, action) {}, initState) // 管理比较复杂的数据类型.
     reducerDispatch({ type: "add" })
 
-    // 副作用: 异步调用 改变dom. 设置订阅. 操作定时器,发送http请求, 如果页面有闪烁的问题,使用useLayoutEffect
+    /* 
+        副作用: 在React更新dom之后运行一些额外的代码, 就是闭包. 必须是个同步代码.
+            - 发送网络请求
+            - 手动变更dom
+            - 开启定时器    需要清除
+            return的必须是一个函数, react会在组件销毁的时候,去执行它
+        - useLayoutEffect: 如果页面有闪烁的问题,使用
+     */
     useEffect(() => {}) // 每次加载都执行
     useEffect(() => {}, []) // 加载完毕 执行一次
     useEffect(() => {
         // do something ...
-        return () => {   // 取消定时器等操作  }
+        return () => {} // 取消定时器等操作
     }, [id]) // 依赖发生变化,开始执行
 
     useLayoutEffect(() => {}) // dom渲染完毕后,同步调用, 使用中要避免开销较大的操作

@@ -10,6 +10,7 @@
     -   `Promise.all()`: 返回成功的
     -   `Promise.allSettled()`: 不管成功失败
     -   `Promise.race()`: 第一个返回值
+    -   `Promise.any()`: 第一个返回值
 
 -   实例方法:
     -   `.then`: 捕获成功失败的值
